@@ -1,0 +1,830 @@
+/* Reset-ish */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f6f7fb;
+  color: #222;
+}
+
+/* Layout */
+#app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Sidebar */
+#sidebar {
+  width: 320px;
+  padding: 1rem;
+  border-right: 1px solid rgba(30,30,30,0.06);
+  background: linear-gradient(180deg,#ffffff 0%, #abd5f4 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 6px 20px rgba(20,30,50,0.04);
+  /* NEW: make the whole sidebar scroll */
+  overflow-y: auto;
+}
+
+#sidebar-header {
+  position: sticky;
+  top: 0;
+  background: transparent;
+  z-index: 3;
+  padding-bottom: 0.5rem;
+}
+
+#title-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 0.5rem;
+}
+
+#title-group h1 {
+  font-size: 1.15rem;
+  margin-bottom: 0.15rem;
+  letter-spacing: -0.2px;
+}
+
+/* Title box: subtle card with left accent — stylish but minimal */
+.title-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(15,23,42,0.04);
+  box-shadow: 0 6px 18px rgba(8,12,20,0.04);
+}
+
+/* Sleek vertical accent bar */
+.title-accent-bar {
+  width: 5px;
+  height: 48px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #3cb44b 0%, #4363d8 60%, #f58231 100%);
+  box-shadow: 0 2px 8px rgba(67,99,216,0.08);
+  flex-shrink: 0;
+  animation: accentBarPulse 2.5s cubic-bezier(.4,0,.2,1) infinite alternate;
+}
+
+@keyframes accentBarPulse {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(1.15); }
+}
+
+/* main title: cleaner sizing and font treatment */
+.title-main {
+  font-size: 1.13rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.1;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.subtitle {
+  font-size: 0.82rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+#title-group .subtitle {
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: #6b7280;
+  margin-bottom: 0.6rem;
+}
+
+/* Controls and Search */
+#controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.control-row {
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+  font-size:0.9rem;
+  color:#374151;
+  cursor:pointer;
+}
+
+#search-wrap {
+  margin-bottom: 0.5rem;
+}
+
+#composer-search {
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border-radius: 10px;
+  border: 1px solid #e6e9ef;
+  background: #fff;
+  font-size: 0.92rem;
+  box-shadow: 0 1px 3px rgba(16,24,40,0.03);
+}
+
+/* Composer list */
+/* Remove the inner scroller so the whole sidebar scrolls */
+#composer-list {
+  margin-top: 0.25rem;
+  /* REMOVE: overflow-y: auto; */
+  /* REMOVE: padding-right tweak for inner scrollbar */
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.composer-item {
+  padding: 0.55rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column; /* stack header & dropdown */
+  gap: 0.45rem;
+  align-items: stretch;
+  transition: background 150ms ease, transform 120ms ease;
+  background: transparent;
+  position: relative;
+}
+
+.composer-item:hover {
+  background: rgba(59,130,246,0.06);
+  transform: translateY(-1px);
+}
+
+.composer-item.active {
+  background: linear-gradient(90deg, rgba(59,130,246,0.08), rgba(99,102,241,0.03));
+  box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+}
+
+.composer-item .caret {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: rgba(15,23,42,0.45);
+  padding-left: 8px;
+}
+
+.swatch {
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.3) inset;
+}
+
+.composer-meta {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+.composer-text {
+  display:flex;
+  flex-direction:column;
+  gap:0.08rem;
+}
+
+/* short composer biography under the name/meta — hidden until composer is clicked */
+.composer-bio {
+  display: block;
+  font-size: 0.89rem;
+  color: #556071;
+  margin-bottom: 0.7rem;
+  line-height: 1.35;
+  /* Remove line clamp for full bio display */
+  overflow: visible;
+  text-overflow: unset;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  -webkit-box-orient: unset;
+}
+
+/* ensure dropdown spacing and top row remain consistent after removing bio */
+.composer-item {
+  padding: 0.55rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  align-items: stretch;
+  transition: background 150ms ease, transform 120ms ease;
+  background: transparent;
+  position: relative;
+}
+
+/* Dropdown — absolute, compact, and floating */
+.route-list {
+  position: relative;
+  left: 0;
+  right: auto;
+  top: auto;
+  z-index: auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba(8,12,20,0.06);
+  padding: 6px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 220ms cubic-bezier(.2,.9,.2,1), opacity 180ms ease, padding 160ms ease;
+  pointer-events: none;
+  margin: 0 0 0 28px; /* align visually with text */
+}
+
+/* show dropdown when expanded (expand in-flow, pushing content below) */
+.composer-item.expanded .route-list {
+  max-height: 420px;
+  opacity: 1;
+  pointer-events: auto;
+  padding: 8px;
+}
+
+.error-state {
+  padding: 0.85rem;
+  border-radius: 10px;
+  background: #fff4f4;
+  border: 1px solid #fca5a5;
+  color: #b91c1c;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+/* small tweak: ensure hover visuals still apply to the top row only */
+.composer-item:hover .composer-top {
+  background: rgba(59,130,246,0.04);
+  transform: none;
+}
+
+/* route items: compact list style */
+.route-item {
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #0f172a;
+  cursor: pointer;
+  transition: background 120ms ease, transform 120ms ease;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.route-item + .route-item { margin-top: 6px; }
+
+.route-item:hover {
+  background: rgba(59,130,246,0.06);
+  transform: translateX(4px);
+}
+
+/* slightly dim caret when dropdown open */
+.composer-item.expanded .caret { color: rgba(15,23,42,0.7); transform: rotate(180deg); transition: transform 180ms ease; }
+
+/* Map */
+#map-container {
+  flex: 1;
+  position: relative;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+/* Leaflet popup styling tweaks */
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+  box-shadow: 0 8px 28px rgba(18,22,30,0.12);
+}
+
+.composer-popup {
+  max-width: 300px;
+  font-size: 0.9rem;
+}
+
+.composer-popup strong {
+  font-size: 0.98rem;
+}
+
+.composer-popup .route-label {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.composer-popup audio {
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+/* Footer */
+#sidebar-footer {
+  margin-top: auto;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  padding-top: 0.4rem;
+}
+.sidebar-sources {
+  margin-top: 6px;
+}
+.sidebar-sources a {
+  font-size: 0.8rem;
+  color: #2563eb;
+  text-decoration: none;
+}
+.sidebar-sources a:hover {
+  text-decoration: underline;
+}
+
+/* Custom scrollbar for sidebar */
+#sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+#sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+#sidebar::-webkit-scrollbar-thumb {
+  background: rgba(15,23,42,0.06);
+  border-radius: 8px;
+}
+
+/* Global View button — sleeker, micro-interactions */
+.global-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  background: rgba(255,255,255,0.03);
+  padding: 0.38rem 0.6rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: #374151;
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 160ms ease, background 160ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: none;
+  align-self: flex-start;
+}
+.global-btn .btn-icon { opacity: 0.9; transform: translateY(0); transition: transform 160ms ease; }
+.global-btn:hover { transform: translateY(-2px); background: rgba(15,23,42,0.04); }
+.global-btn:focus { outline: none; box-shadow: 0 6px 18px rgba(59,130,246,0.12); }
+
+/* active (global) state: colorful gradient + subtle glow */
+.global-btn.active {
+  background: linear-gradient(90deg, rgba(79,70,229,0.12), rgba(6,182,212,0.06));
+  color: #0f172a;
+  box-shadow: 0 6px 18px rgba(99,102,241,0.08);
+}
+.global-btn.active .btn-icon { transform: translateY(-1px) scale(1.02); }
+
+/* alternate look when not global (focused mode) */
+.global-btn:not(.active) {
+  background: transparent;
+  border: 1px solid rgba(15,23,42,0.04);
+}
+
+/* small responsive tweak */
+@media (max-width: 800px) {
+  #sidebar { width: 100%; height: 320px; position: absolute; z-index: 6; }
+  #app { flex-direction: column; }
+  .title-main { font-size: 1rem; }
+}
+
+/* Node chooser popup (locations with multiple nodes) */
+.leaflet-popup.node-chooser-popup .leaflet-popup-content-wrapper {
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow: 0 12px 28px rgba(8,12,20,0.12);
+  background: #ffffff;
+}
+
+/* hide the little triangle for a cleaner floating panel */
+.leaflet-popup.node-chooser-popup .leaflet-popup-tip {
+  display: none;
+}
+
+.node-chooser {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 180px;
+  max-width: 260px;
+  color: #0f172a;
+}
+
+.node-choice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: background 120ms ease, transform 120ms ease;
+  width: 100%;
+  text-align: left;
+  font-size: 0.92rem;
+}
+
+/* small color swatch inside each choice (inline override) */
+.node-choice > span {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex: 0 0 12px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset;
+}
+
+/* hover affordance */
+.node-choice:hover {
+  background: rgba(59,130,246,0.06);
+  transform: translateX(4px);
+}
+
+/* tiny spacing between stacked choices */
+.node-chooser .node-choice + .node-choice {
+  margin-top: 4px;
+}
+
+/* make the composer top row clearly interactive */
+.composer-top {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  cursor: pointer; /* clarify interactivity */
+  padding: 6px 2px;
+  border-radius: 8px;
+}
+
+/* subtle focus style for keyboard users */
+.composer-top:focus {
+  outline: none;
+  box-shadow: 0 4px 12px rgba(59,130,246,0.12);
+}
+
+/* reflect expanded state visually on topRow */
+.composer-item.expanded .composer-top {
+  background: linear-gradient(90deg, rgba(59,130,246,0.04), rgba(99,102,241,0.01));
+}
+
+/* Dropdown for composer: bio + city/date list */
+.composer-dropdown {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(8,12,20,0.07);
+  margin: 0.5rem 0 0 28px;
+  padding: 0.7rem 1rem 0.7rem 1rem;
+  font-size: 0.93rem;
+  color: #222;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 260ms cubic-bezier(.2,.9,.2,1), opacity 180ms ease;
+  pointer-events: none;
+  display: block;
+}
+
+.composer-item.expanded .composer-dropdown {
+  max-height: 400px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.composer-bio {
+  display: block;
+  font-size: 0.89rem;
+  color: #556071;
+  margin-bottom: 0.7rem;
+  line-height: 1.35;
+  /* Remove line clamp for full bio display */
+  overflow: visible;
+  text-overflow: unset;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  -webkit-box-orient: unset;
+}
+
+.composer-city-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.composer-city-item {
+  padding: 0.38rem 0.5rem;
+  border-radius: 7px;
+  cursor: pointer;
+  color: #1e293b;
+  background: transparent;
+  transition: background 120ms, color 120ms;
+  font-size: 0.92rem;
+  outline: none;
+}
+.composer-city-item:hover, .composer-city-item:focus {
+  background: rgba(59,130,246,0.09);
+  color: #2563eb;
+}
+
+/* Timeline Bar: compact floating card */
+#timeline-bar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 64px;
+  z-index: 9999;
+  /*background: rgba(254, 254, 254, 0.94);  */ 
+  background: transparent;
+  border-radius: 14px;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(15,23,42,0.08);
+  box-shadow: 0 10px 30px rgba(15,23,42,0.12);
+}
+
+/* Ensure the wrap is a stacking context */
+#timeline-bar .timeline-wrap {
+  position: relative;
+  width: 400px;
+  max-width: 74vw;
+  margin: 0 auto;
+  z-index: 0; /* base */
+}
+
+/* Bring the slider above the ticks */
+#timeline-range {
+  position: relative; /* create stacking context for the input */
+  z-index: 2;           /* thumb stays above ticks */
+  width: 100%;
+  height: 24px;
+  margin: 0;
+  background: transparent;
+  appearance: none;
+}
+
+
+
+/* End ticks (already present) — keep them behind the slider head */
+#timeline-bar .timeline-wrap::before,
+#timeline-bar .timeline-wrap::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 14px;
+  background: #373e52;
+  border-radius: 1px;
+  pointer-events: none;
+  opacity: 0.95;
+  z-index: 1; /* below the input/thumb */
+}
+#timeline-bar .timeline-wrap::before { left: 0; }
+#timeline-bar .timeline-wrap::after  { right: 0; }
+
+/* Modern academic slider */
+#timeline-range {
+  width: 100%;
+  height: 24px;
+  margin: 0;
+  background: transparent;
+  appearance: none;
+}
+
+/* WebKit track */
+#timeline-range::-webkit-slider-runnable-track {
+  height: 4px;
+  background: linear-gradient(90deg, #334155 0%, #334155 100%); /* slate-700 */
+  border-radius: 999px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.35) inset;
+}
+/* WebKit thumb */
+#timeline-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -7px; /* vertically center over 4px track */
+  border-radius: 50%;
+  background: #0f172a; /* slate-900 */
+  border: 2px solid #fff;
+  box-shadow: 0 6px 16px rgba(15,23,42,0.18);
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+#timeline-range:active::-webkit-slider-thumb {
+  transform: scale(1.04);
+  box-shadow: 0 8px 18px rgba(15,23,42,0.22);
+}
+
+/* Firefox track */
+#timeline-range::-moz-range-track {
+  height: 4px;
+  background: #334155;
+  border-radius: 999px;
+}
+/* Firefox thumb */
+#timeline-range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #0f172a;
+  border: 2px solid #fff;
+  box-shadow: 0 6px 16px rgba(15,23,42,0.18);
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+#timeline-range:active::-moz-range-thumb {
+  transform: scale(1.04);
+  box-shadow: 0 8px 18px rgba(15,23,42,0.22);
+}
+
+/* Edge/IE (fallback) */
+#timeline-range::-ms-track {
+  height: 4px;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+#timeline-range::-ms-fill-lower,
+#timeline-range::-ms-fill-upper {
+  background: #334155;
+  border-radius: 999px;
+}
+#timeline-range::-ms-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #0f172a;
+  border: 2px solid #fff;
+  box-shadow: 0 6px 16px rgba(15,23,42,0.18);
+}
+
+/* Floating year indicator */
+#timeline-year-indicator {
+  position: absolute;
+  top: -30px;
+  transform: translateX(-50%);
+  font: 600 1rem/1 Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #0f172a;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(67,99,216,0.08);
+  padding: 2px 10px;
+  pointer-events: none;
+  transition: left 0.06s linear;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* Ends container directly under the slider, no gap */
+#timeline-ends {
+  display: none !important;
+}
+
+.timeline-end-label {
+  display: none !important;
+}
+
+.timeline-end-tick {
+  display: none !important;
+}
+
+/* If your slider appears slightly lower on some browsers, use a media query tweak */
+@supports selector(:focus-visible) {
+  .timeline-end-tick {
+    margin-top: -5px;     /* subtle adjust for WebKit track rendering */
+  }
+}
+
+/* Uniform, slightly slower dashed animation */
+.leaflet-overlay-pane svg path.route-flow {
+  stroke-dasharray: 10 14;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: routeDash 9s linear infinite; /* was variable, now uniform & slower */
+  transition: stroke-width 0.18s ease, filter 0.25s ease;
+}
+
+.leaflet-overlay-pane svg path.route-flow.highlighted {
+  animation-duration: 4.5s; /* speed up on highlight (half of base) */
+  filter: brightness(1.15);
+}
+
+@keyframes routeDash {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -420px; }
+}
+
+.sidebar-subheader {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #334155;
+  letter-spacing: 0.3px;
+  margin: 0.25rem 0 0.35rem 0;
+  padding-left: 2px;
+  border-bottom: 1px solid rgba(15,23,42,0.08);
+  padding-bottom: 6px;
+}
+
+/* Studios list */
+#studio-list { margin-top: 0.25rem; display: flex; flex-direction: column; gap: 0.25rem; }
+.studio-item { padding: 0.5rem; border-radius: 10px; cursor: pointer; transition: background 120ms ease, transform 120ms ease; }
+.studio-item:hover { background: rgba(59,130,246,0.06); transform: translateY(-1px); }
+.studio-item.active { background: rgba(59,130,246,0.08); }
+.studio-name { font-weight: 600; color: #0f172a; }
+.studio-meta { font-size: 0.78rem; color: #6b7280; margin-top: 2px; }
+.studio-bio { font-size: 0.9rem; color: #556071; margin-top: 0.35rem; line-height: 1.35; }
+
+/* Visual pulsing fill — no stroke to avoid double-ring look */
+.leaflet-overlay-pane svg .studio-circle {
+  stroke: none;                     /* remove stroke on fill layer */
+  fill: rgba(99,102,241,0.20);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: studioPulseScale 2.8s ease-in-out infinite;
+}
+.leaflet-overlay-pane svg .studio-circle.highlighted {
+  filter: brightness(1.08);
+  animation-duration: 1.8s;
+}
+
+/* Clickable ring — slightly thicker, with active state */
+.leaflet-overlay-pane svg .studio-ring {
+  fill: none;
+  stroke: #332068;
+  stroke-width: 3;
+  cursor: pointer;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: studioPulseScale 2.8s ease-in-out infinite;
+  transition: stroke-width 160ms ease, filter 160ms ease;
+}
+
+.leaflet-overlay-pane svg .studio-ring:hover {
+  stroke-width: 4;
+  filter: brightness(1.06);
+}
+
+/* Active studio ring (on click) */
+.leaflet-overlay-pane svg .studio-ring.active {
+  stroke-width: 6;
+}
+
+/* Shared pulse keyframes */
+@keyframes studioPulseScale {
+  0%   { transform: scale(1);   }
+  50%  { transform: scale(1.12); }
+  100% { transform: scale(1);   }
+}
+
+/* Tabs */
+.sidebar-tabs {
+  display: flex;
+  gap: 6px;
+  margin: 0.4rem 0 0.2rem 0;
+}
+.tab-btn {
+  appearance: none;
+  border: 1px solid rgba(15,23,42,0.10);
+  background: #fff;
+  color: #0f172a;
+  font-size: 0.85rem;
+  border-radius: 10px;
+  padding: 0.32rem 0.6rem;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease, box-shadow 160ms ease;
+}
+.tab-btn:hover {
+  background: rgba(59,130,246,0.06);
+}
+.tab-btn.active {
+  background: linear-gradient(90deg, rgba(79,70,229,0.12), rgba(6,182,212,0.06));
+  color: #0f172a;
+  box-shadow: 0 4px 12px rgba(99,102,241,0.10);
+  border-color: rgba(99,102,241,0.30);
+}
+
+/* Panels: no extra spacing changes needed; they reuse existing list styles */
+#panel-composers[hidden],
+#panel-studios[hidden] {
+  display: none !important;
+}

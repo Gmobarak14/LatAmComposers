@@ -1,0 +1,310 @@
+{
+  "studios": [
+    {
+      "id": "columbia_princeton_emc",
+      "name": "Columbia–Princeton Electronic Music Center",
+      "center": [ -74.0060,40.7128],          
+      "radiusMeters": 2200,
+      "years": "1959–1990s",
+      "bio": "The oldest electronic music center in the United States, founded in the 1959 as a joint venture of Columbia and Princeton. For many composers from both North and South America as well as internationally, the center served as a critical site of artistic and technological exchange, offering training, mentorship, and access to unique resources such as the RCA Mark II Synthesizer."
+    },
+     {
+      "id": "claem",
+      "name": "Centro Latinoamericano de Altos Estudios Musicales (CLAEM)",
+      "center": [ -58.4173,-34.6118],
+      "radiusMeters": 1500,
+      "years": "1962–1978",
+      "bio": "Founded in 1962 at the Instituto Torcuato Di Tella in Buenos Aires, CLAEM was one of the most influential institutions in the development of Latin American contemporary and electroacoustic music. Through its prestigious fellowship program, it brought together emerging composers from Argentina, Chile, Peru, Brazil, Uruguay, Colombia, Venezuela, and more, creating an environment of regional exchange, experimentation, and technological access."
+    },
+      {
+      "id": "icap",
+      "name": "Instituto Cubano de Amistad con los Pueblos (ICAP) Electronic Music Studio",
+      "center": [ -82.3666, 23.1136],
+      "radiusMeters": 1000,
+      "years": "1966-Present",
+      "bio": "Established in 1979, ICAP's Electronic Music Studio played a crucial role in the development of electroacoustic music in Cuba. It became a vital resource for younger composers, offering training, access to equipment, and a collaborative environment that eventually evolved into the Laboratorio Nacional de Música Electroacústica (LNME)."
+    }
+  ],
+  "composers": [
+  {
+    "id": "del_monaco",
+    "name": "Alfredo del Mónaco",
+    "birthYear": 1938,
+    "deathYear": 2015,
+    "bio": "Venezuelan composer whose work bridged orchestral, chamber, and electroacoustic traditions, establishing him as one of the leading voices of Latin American contemporary music in the late 20th century. His early experiments with timbre, form, and technology marked a decisive shift in Venezuela’s modernist landscape.",
+    "routes": [
+      {
+        "from": [-66.9036, 10.4806],
+        "to": [-66.9036, 10.4806],
+        "city": "Caracas",
+        "years": "1966-1969",
+        "label": "Leaves Law School and begins studying composition at Instituto Nacional de Cultura y Bellas Artes (INCIBA) Studio. Here, he begins to become interested in electroacoustic music.",
+        "clipIndex": null
+      },
+      {
+        "from": [-66.9036,10.4806],
+        "to": [-74.0060,40.7128],
+        "city": "New York",
+        "years": "1964-1974",
+        "label": "Receives doctorate at Columbia-Princeton Electronic Music Center. Studies with Vladimir Ussachevsky and Mario Davidovsky.",
+        "clipIndex": 1
+      },
+      {
+        "from": [-74.0060,40.7128],
+        "to": [  -77.036, 38.9072],
+        "city": "Washington, DC",
+        "years": "1974",
+        "label": "Presents work at Inter-American Music Festival in Washington, DC. ",
+        "clipIndex": 0
+      }, 
+      {"from": [ -77.036, 38.9072],
+        "to": [   -71.0565,  42.3555],
+        "years": "1976",
+        "city": "Boston",
+        "label": "Presents work at International Society for Contemporary Music (ISCM) World Music Day in Boston.",
+        "clipIndex": 2
+    }
+    ],
+    "clips": [
+      {
+        "title": "Syntagma (A)",
+        "year": 1972,
+        "url": "/audio/Del_Monaco.wav",
+        "durationSec": 20
+      },
+      {
+        "title": "Trópicos (Excerpt)",
+        "year": 1973,
+        "url": "/audio/Tropico.wav",
+        "durationSec": 20
+      },
+         {
+        "title": "Estudios Electrónicos III",
+        "year": 1974,
+        "url": "/audio/Ex3.mp3",
+        "durationSec": 20
+      }
+    ]
+  },
+
+  {
+    "id": "bolanos",
+    "name": "César Bolaños",
+    "birthYear": 1931,
+    "deathYear": 2012,
+    "bio": "Peruvian avant-garde composer whose work helped define early electronic and computer-assisted music in Latin America. He became a central figure at the Centro Latinoamericano de Altos Estudios Musicales (CLAEM), where he played an central role in developing one of the region’s first electronic-music studios. His innovative approach to tape, computation, and interdisciplinary performance made him a key contributor to the continent’s experimental music landscape.",
+    "routes": [
+      {
+        "from":[-77.0282, -12.0432 ],
+        "to": [-77.0282, -12.0432],
+        "years": "1946-1953",
+        "city": "Lima",
+        "label": "Studied piano at the National Conservatory of Music in Lima.",
+        "clipIndex": null
+      },
+      {
+        "from": [-77.0282, -12.0432],
+        "to": [-74.0060,40.7128],
+        "years": "1959-1963",
+        "city": "New York",
+        "label": "Studies composition at Manhattan School of Music and communication technology at the RCA Institute of Electronic Technology."
+      },
+      {
+        "from":[-74.0060,40.7128],
+        "to": [-58.3816, -34.6037],
+        "years": "1963-1970",
+        "city": "Buenos Aires",
+        "label": "Becomes a fellow at Centro Latinoamericano de Altos Estudios Musicales (CLAEM), teaching composition and helping to build the first electronic music studio in the institute."
+      }
+ 
+      
+    ],
+    "clips": [
+      {
+        "title": "Interpolaciones",
+        "year": 1966,
+        "url": "/audio/Inter.mp3",
+        "durationSec": 20
+      }
+    ]
+  },
+
+  {
+    "id": "juan_blanco",
+    "name": "Juan Blanco",
+    "birthYear": 1919,
+    "deathYear": 2008,
+    "bio": "Cuban composer and the pioneering figure of electroacoustic music in Cuba, known for creating the country’s first electronic works and establishing its earliest electronic music studios. His career blended Cuban musical traditions with tape techniques. Blanco also played a foundational institutional role, opening his studio to emerging artists and shaping the development of electroacoustic practice across the island.",
+    "routes": [
+      {
+        "from": [-82.3666, 23.1136],
+        "to": [-82.3666, 23.1136],
+        "years": "1960s-1990s",
+        "city": "Havana",
+        "label": "Composed Cuba’s first electronic pieces and premiers them at large public concerts. He is appointed director of the electronic music center at Instituto Cubano de Amistad con los Pueblos (ICAP) in 1978.",
+        "clipIndex": 2
+      },
+      {
+        "from": [-82.3666, 23.1136],
+        "to": [ -71.0565,  42.3555],
+        "years": "1993",
+        "city": "Boston",
+        "label": "Visits Boston for lectures at Berklee College of Music and School of the Museum of Fine Arts. Presents work at Wesleyan University's New Music Festival and the Institute of Contemporary Art.",
+        "clipIndex": 1
+      },
+      {
+        "from": [-82.3666, 23.1136],
+        "to": [-73.57, 45.51],
+        "years": "1967",
+        "city": "Montreal",
+        "label": "Presents work at the Cuba Pavilion of 1967 International and Universal Exposition in Montreal.",
+        "clipIndex": 0
+      },
+      {
+        "from": [-82.3666, 23.1136],
+        "to": [135.52,  34.68],
+        "years": "1970",
+        "city": "Osaka",
+        "label": "Presents work at the Cuba Pavilion of 1970 International and Universal Exposition in Osaka.",
+        "clipIndex": 3
+      }
+    ],
+    "clips": [
+      {
+        "title": "Música para Danza",
+        "year": 1961,
+        "url": "/audio/Danza.mp3",
+        "durationSec": 20
+      },
+      {
+        "title": "Cirkus Toccata",
+        "year": 1984,
+        "url": "/audio/Cirkus.mp3",
+        "durationSec": 20
+      },
+      {
+        "title": "Interludio con Máquinas",
+        "year": 1963,
+        "url": "/audio/Interlude_JB.wav",
+        "durationSec": 20
+      },
+      {
+        "title": "Galaxia M-50 (Excerpt)",
+        "year": 1970,
+        "url": "/audio/Galaxia_JB.wav",
+        "durationSec": 20
+      }
+    ]
+  },
+    {
+    "id": "carlos_jimenez_m",
+    "name": "Carlos Jiménez Mabarak",
+    "birthYear": 1916,
+    "deathYear": 1994,
+    "bio": "Mexican composer whose work bridged nationalist musical traditions with avant-garde practices across concert, theater, and film music. He is widely recognized for composing \"El Paraíso de los Ahogados\" (1958), considered the first electroacoustic piece composed in Mexico. Mabarak helped shape Mexico’s mid-century modernist identity and opened pathways for future experimental composers.",
+    "routes": [
+      {
+        "from": [-91.51806, 14.83472],
+        "to": [-91.51806, 14.83472],
+        "years": "1922",
+        "city": "Quetzaltenango",
+        "label": "Started learning piano at age 6 under Guatemalan composer Jesús Castillo.",
+        "clipIndex": null
+      },
+        {
+        "from": [-91.51806, 14.83472],
+        "to": [ 4.35, 50.85],
+        "years": "1932-1937",
+        "city": "Brussels",
+        "label": "Studies at Royal Conservatory of Brussels under Marguerite Wouters. Aditionally, studies radio telephone engineering at the École Polytechnique of Brussels.",
+        "clipIndex": null
+      },
+      {
+        "from":[ 4.35, 50.85],
+        "to": [-99.1332,19.4326],
+        "years": "1937-1956",
+        "city": "Mexico City",
+        "label": "Returns to Mexico City, where he studies at the National Conservatory of Music and begins teaching there.",
+        "clipIndex": 1
+      },
+      {
+        "from": [-99.1332,19.4326],
+        "to": [2.3522, 48.8566],
+        "years": "1956",
+        "city": "Paris",
+        "label": "Receives a scholarship by the UNESCO and goes to study dodecaphonism in Paris with René Leibowitz.",
+        "clipIndex": 0
+      }
+    ],
+    "clips": [
+      {
+        "title": "El Paraíso de los Ahogados",
+        "year": 1960,
+        "url": "/audio/ahogados.mp3",
+        "durationSec": 20
+      },
+      {
+       "title": " Sinfonía No.1",
+        "year": 1945,
+        "url": "/audio/sinfonia1.mp3",
+        "durationSec": 20
+      }
+    ]
+  },
+  { "id": "mario_davidovsky",
+    "name": "Mario Davidovsky",
+    "birthYear": 1934,
+    "deathYear": 2019,
+    "bio": "Argentine-American composer celebrated for his groundbreaking work in electroacoustic music, particularly his Synchronisms series, which utilized live instruments and electronically generated sound. After moving to the United States, he became a central figure at the Columbia-Princeton Electronic Music Center, where he helped define early techniques in tape and hybrid composition. His work profoundly shaped the development of electroacoustic practice in the Americas and earned him the 1971 Pulitzer Prize for Synchronisms No. 6.",
+    "routes": [
+      {
+        "from": [-58.3705, -34.6170],
+        "to": [-58.3705, -34.6170],
+        "years": "1954",
+        "city": "Buenos Aires",
+        "label": "Studied composition and theory under Guillermo Graetzer at the Bartolome Mitre School within the University of Buenos Aires.",
+        "clipIndex": null
+
+  },
+  {
+     "from": [-58.3705, -34.6170],
+        "to": [-73.3107, 42.3483],
+        "years": "1958",
+        "city": "Lenox",
+        "label": "Studied with Aaron Copland and Milton Babbitt at the Tanglewood Music Center",
+        "clipIndex": null
+  },
+  {
+     "from": [-73.3107, 42.3483],
+        "to": [-74.0060,40.7128],
+        "years": "1960-1993",
+        "city": "New York",
+        "label": "Joined Columbia-Princeton Electronic Music Center as associate director. Here he began to work on his electroacoustic series: Synchronisms. Served as the labs director from 1981-1993 in addition to teaching music at Columbia University.",
+        "clipIndex": 0
+  },
+    {
+     "from": [-74.0060,40.7128],
+        "to": [-71.1057,42.3666],
+        "years": "1994",
+        "city": "Cambridge",
+        "label": "Joined Harvard University as a professor of music.",
+        "clipIndex": 1
+  }
+    ],
+    "clips": [
+      {
+        "title": "Synchronisms No. 6",
+        "year": 1970,
+        "url": "/audio/sync_6.mp3",
+        "durationSec": 20
+      },
+      {
+        "title": "Synchronisms No. 8",
+        "year": 1988,
+        "url": "/audio/sync_9.mp3",
+        "durationSec": 20
+      }
+    ]
+  }
+  ]
+}

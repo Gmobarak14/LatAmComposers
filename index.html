@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LatAm Composer Map</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <!-- Project CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="app">
+    <aside id="sidebar">
+      <div id="sidebar-header">
+        <div id="title-group">
+          <div class="title-accent-bar"></div>
+          <div class="title-main-wrap">
+            <h1 class="title-main">Electronic Music in Latin America</h1>
+            <p class="subtitle">20th-century composers, migrations & pieces</p>
+          </div>
+        </div>
+
+        <div id="controls">
+          <!-- modern toggle button with icon + label -->
+          <button id="global-view-btn" class="global-btn active" aria-pressed="true" title="Toggle Global View">
+            <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+              <path d="M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 6h.01M7 18h.01M17 6h.01M17 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="btn-label">Global View</span>
+          </button>
+        </div>
+
+        <div id="search-wrap">
+          <input id="composer-search" type="search" placeholder="Search composers or places…" />
+        </div>
+
+        <!-- Tabs -->
+        <div class="sidebar-tabs" role="tablist" aria-label="Sidebar Sections">
+          <button id="tab-composers" class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-composers">Composers</button>
+          <button id="tab-studios" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-studios">Studios</button>
+        </div>
+
+        <!-- Panels -->
+        <div id="panel-composers" role="tabpanel" aria-labelledby="tab-composers">
+         
+          <div id="composer-list" aria-live="polite"></div>
+        </div>
+
+        <div id="panel-studios" role="tabpanel" aria-labelledby="tab-studios" hidden>
+          
+          <div id="studio-list" aria-live="polite"></div>
+        </div>
+
+      </div>
+
+      <footer id="sidebar-footer">
+        <small>Click a composer to focus; hover to highlight routes.</small>
+        <div class="sidebar-sources">
+          <a href="sources.html" target="_blank" rel="noopener">Sources</a>
+        </div>
+      </footer>
+    </aside>
+
+    <main id="map-container">
+      <div id="map"></div>
+    </main>
+  </div>
+
+  <!-- Background music (starts after first user click) -->
+  <audio id="bg-music" src="audio/background_music.wav" loop preload="auto"></audio>
+
+  <div id="timeline-bar">
+    <div class="timeline-wrap">
+      <div id="timeline-year-indicator">2000</div>
+      <input
+        type="range"
+        id="timeline-range"
+        min="1930"
+        max="2000"
+        value="2000"
+        step="1"
+        aria-label="Year"
+      />
+    </div>
+  </div>
+
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+
+  <script src="js/main.js"></script>
+</body>
+</html>
